@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding = "UTF-8" ?>
 <!--
   Licensed to the Apache Software Foundation (ASF) under one or more
   contributor license agreements.  See the NOTICE file distributed with
@@ -504,7 +504,7 @@
 
   <!-- A filter that sets character encoding that is used to decode -->
   <!-- parameters in a POST request -->
-<!--
+<!-- 
     <filter>
         <filter-name>setCharacterEncodingFilter</filter-name>
         <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
@@ -512,7 +512,7 @@
             <param-name>encoding</param-name>
             <param-value>UTF-8</param-value>
         </init-param>
-        <async-supported>true</async-supported>
+      <async-supported>true</async-supported>
     </filter>
 -->
 
