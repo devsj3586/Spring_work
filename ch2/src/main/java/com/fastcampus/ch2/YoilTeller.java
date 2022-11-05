@@ -14,7 +14,7 @@ public class YoilTeller {
     @RequestMapping("/getYoil") // http://localhost:8080/ch2/getYoil?year=2021&month=10&day=1
     //    public static void main(String[] args) {
     public void main(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        // 1. ÀÔ·Â
+        // 1. ì…ë ¥
 //        String year = args[0];
 //        String month = args[1];
 //        String day = args[2];
@@ -26,25 +26,25 @@ public class YoilTeller {
         int mm = Integer.parseInt(month);
         int dd = Integer.parseInt(day);
 
-        // 2. Ã³¸®
+        // 2. ì²˜ë¦¬
         Calendar cal = Calendar.getInstance();
         cal.set(yyyy, mm - 1, dd);
 
         int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
-        char yoil = " ÀÏ¿ùÈ­¼ö¸ñ±İÅä".charAt(dayOfWeek);
+        char yoil = " ì¼ì›”í™”ìˆ˜ëª©ê¸ˆí† ".charAt(dayOfWeek);
 
-        // 3. Ãâ·Â
-//        System.out.println(year + "³â " + month + "¿ù " + day + "ÀÏÀº ");
-//        System.out.println(yoil + "¿äÀÏÀÔ´Ï´Ù.");
-        response.setContentType("text/html");    // ÀÀ´äÀÇ Çü½ÄÀ» html·Î ÁöÁ¤
-        response.setCharacterEncoding("utf-8");  // ÀÀ´äÀÇ ÀÎÄÚµùÀ» utf-8·Î ÁöÁ¤
-        PrintWriter out = response.getWriter();  // ºê¶ó¿ìÀú·ÎÀÇ Ãâ·Â ½ºÆ®¸²(out)À» ¾ò´Â´Ù.
+        // 3. ì¶œë ¥
+//        System.out.println(year + "ë…„ " + month + "ì›” " + day + "ì¼ì€ ");
+//        System.out.println(yoil + "ìš”ì¼ì…ë‹ˆë‹¤.");
+        response.setContentType("text/html");    // ì‘ë‹µì˜ í˜•ì‹ì„ htmlë¡œ ì§€ì •
+        response.setCharacterEncoding("utf-8");  // ì‘ë‹µì˜ ì¸ì½”ë”©ì„ utf-8ë¡œ ì§€ì •
+        PrintWriter out = response.getWriter();  // ë¸Œë¼ìš°ì €ë¡œì˜ ì¶œë ¥ ìŠ¤íŠ¸ë¦¼(out)ì„ ì–»ëŠ”ë‹¤.
         out.println("<html>");
         out.println("<head>");
         out.println("</head>");
         out.println("<body>");
-        out.println(year + "³â " + month + "¿ù " + day + "ÀÏÀº ");
-        out.println(yoil + "¿äÀÏÀÔ´Ï´Ù.");
+        out.println(year + "ë…„ " + month + "ì›” " + day + "ì¼ì€ ");
+        out.println(yoil + "ìš”ì¼ì…ë‹ˆë‹¤.");
         out.println("</body>");
         out.println("</html>");
         out.close();

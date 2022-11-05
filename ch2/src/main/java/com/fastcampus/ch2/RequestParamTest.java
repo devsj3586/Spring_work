@@ -5,11 +5,17 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class RequestParamTest {
+	@ExceptionHandler(Exception.class)
+	public String catcher(Exception ex) {
+		return "yoilError";
+	}
+	
 	@RequestMapping("/requestParam")
 	public String main(HttpServletRequest request) {
 		String year = request.getParameter("year");
@@ -21,7 +27,7 @@ public class RequestParamTest {
 	}
 
 	@RequestMapping("/requestParam2")
-//	public String main2(@RequestParam(name="year", required=false) String year) {   // ¾Æ·¡¿Í µ¿ÀÏ  required ÇÊ¼ö ¿©ºÎ 
+//	public String main2(@RequestParam(name="year", required=false) String year) {   // ì•„ëž˜ì™€ ë™ì¼  required í•„ìˆ˜ ì—¬ë¶€ 
 	public String main2(String year) {   
 //		http://localhost/ch2/requestParam2         ---->> year=null
 //		http://localhost/ch2/requestParam2?year    ---->> year=""
@@ -30,9 +36,9 @@ public class RequestParamTest {
 	}
 
 	@RequestMapping("/requestParam3")
-//		public String main3(@RequestParam(name="year", required=true) String year) {   // ¾Æ·¡¿Í µ¿ÀÏ  ÇÊ¿äÇÒ¶© ¸í½ÃÀûÀ¸·Î required Àû±â 
+//		public String main3(@RequestParam(name="year", required=true) String year) {   // ì•„ëž˜ì™€ ë™ì¼  í•„ìš”í• ë• ëª…ì‹œì ìœ¼ë¡œ required ì ê¸° 
 		public String main3(@RequestParam String year) {    
-//		http://localhost/ch2/requestParam3         ---->> year=null   400 Bad Request. required=true¶ó¼­ 
+//		http://localhost/ch2/requestParam3         ---->> year=null   400 Bad Request. required=trueë¼ì„œ 
 //		http://localhost/ch2/requestParam3?year    ---->> year=""
 		System.out.printf("[%s]year=[%s]%n", new Date(), year);
 		return "yoil";	
@@ -73,7 +79,7 @@ public class RequestParamTest {
 	}
 
 	@RequestMapping("/requestParam8") 
-	public String main8(@RequestParam(required=false) int year) {    // ÇÊ¼ö ÀÔ·Â X  Å¸ÀÔ int - º¯È¯±îÁö ÇØ¾ßµÊ. ÇÊ¼öÀÔ·ÂÀÌ ¾Æ´Ò´í ±âº»°ª ÀÖ¾î¾ßÇÔ.
+	public String main8(@RequestParam(required=false) int year) {    // í•„ìˆ˜ ìž…ë ¥ X  íƒ€ìž… int - ë³€í™˜ê¹Œì§€ í•´ì•¼ë¨. í•„ìˆ˜ìž…ë ¥ì´ ì•„ë‹ëŒ„ ê¸°ë³¸ê°’ ìžˆì–´ì•¼í•¨.
 	//	http://localhost/ch2/requestParam8        ---->> 500 java.lang.IllegalStateException: Optional int parameter 'year' is present but cannot be translated into a null value due to being declared as a primitive type. Consider declaring it as object wrapper for the corresponding primitive type.
 	//	http://localhost/ch2/requestParam8?year   ---->> 400 Bad Request, nested exception is java.lang.NumberFormatException: For input string: "" 
 		System.out.printf("[%s]year=[%s]%n", new Date(), year);

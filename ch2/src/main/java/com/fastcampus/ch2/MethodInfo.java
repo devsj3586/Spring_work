@@ -6,20 +6,20 @@ import java.util.StringJoiner;
 
 public class MethodInfo {
 	public static void main(String[] args) throws Exception {
-		// 1. YoilTeller Å¬·¡½ºÀÇ °´Ã¼¸¦ »ı¼º
+		// 1. YoilTeller í´ë˜ìŠ¤ì˜ ê°ì²´ë¥¼ ìƒì„±
 		Class clazz = Class.forName("com.fastcampus.ch2.YoilTellerMVC");
 		Object obj = clazz.newInstance();
 		
-		//2 . ¸ğµç ¸Ş¼­µå Á¤º¸¸¦ °¡Á®¿Í¼­ ¹è¿­¿¡ ÀúÀå 
+		//2 . ëª¨ë“  ë©”ì„œë“œ ì •ë³´ë¥¼ ê°€ì ¸ì™€ì„œ ë°°ì—´ì— ì €ì¥ 
 		Method[] methodArr = clazz.getDeclaredMethods();
 		
 		for(Method m : methodArr) {
-			String name = m.getName(); // ¸Ş¼²ÀÇ ÀÌ¸§
-			Parameter[] paramArr = m.getParameters(); // ¸Å°³º¯¼ö ¸ñ·Ï
+			String name = m.getName(); // ë©”ì„œë“œì˜ ì´ë¦„
+			Parameter[] paramArr = m.getParameters(); // ë§¤ê°œë³€ìˆ˜ ëª©ë¡
 //			Class[] paramtypeArr = m.getParameterTypes(); // 
-			Class returnType = m.getReturnType(); // ¹İÈ¯ Å¸ÀÔ
+			Class returnType = m.getReturnType(); // ë°˜í™˜ íƒ€ì…
 			
-			StringJoiner paramList = new StringJoiner(", ", "(", ")");  //  , , ±¸ºĞÀÚ  ( Á¢µÎ»ç , ) Á¢¹Ì»ç 
+			StringJoiner paramList = new StringJoiner(", ", "(", ")");  //  , , êµ¬ë¶„ì  ( ì ‘ë‘ì‚¬ , ) ì ‘ë¯¸ì‚¬ 
 			
 			for (Parameter param : paramArr) {
 				String paramName = param.getName();

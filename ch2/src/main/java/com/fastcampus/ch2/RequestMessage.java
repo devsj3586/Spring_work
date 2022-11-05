@@ -31,7 +31,7 @@ public class RequestMessage {
 			
 		}
 		
-		// 3. request body - POSTÀÏ ¶§¸¸ ÇØ´ç, GETÀº body°¡ ¾øÀ½ (CONTENT_LENGTH=0) 
+		// 3. request body - POSTì¼ ë•Œë§Œ í•´ë‹¹, GETì€ bodyê°€ ì—†ìŒ (CONTENT_LENGTH=0) 
 		final int CONTENT_LENGTH = request.getContentLength();
 //		System.out.println("content length = " + CONTENT_LENGTH);
 		
@@ -46,41 +46,3 @@ public class RequestMessage {
 		}
 	}
 }
-
-//[½ÇÇà°á°ú1] - GET ¿äÃ»
-//GET /ch2/requestMessage?year=2021&month=10&day=1 HTTP/1.1  <--- ¿äÃ» ¶óÀÎ(request line)
-//host:localhost:8080
-//connection:keep-alive
-//sec-ch-ua:"Chromium";v="94", "Google Chrome";v="94", ";Not A Brand";v="99"
-//sec-ch-ua-mobile:?0
-//sec-ch-ua-platform:"macOS"
-//upgrade-insecure-requests:1
-//user-agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36
-//accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
-//sec-fetch-site:none
-//sec-fetch-mode:navigate
-//sec-fetch-user:?1
-//sec-fetch-dest:document
-//accept-encoding:gzip, deflate, br
-//accept-language:ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7
-
-//[½ÇÇà°á°ú2] - POST ¿äÃ»
-//POST /ch2/requestMessage HTTP/1.1  <--- ¿äÃ» ¶óÀÎ(request line)
-//host:localhost:8080
-//connection:keep-alive
-//content-length:90
-//sec-ch-ua:"Chromium";v="94", "Google Chrome";v="94", ";Not A Brand";v="99"
-//cache-control:no-cache
-//content-type:application/x-www-form-urlencoded
-//sec-ch-ua-mobile:?0
-//user-agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36
-//sec-ch-ua-platform:"macOS"
-//accept:*/*
-//origin:chrome-extension://coohjcphdfgbiolnekdpbcijmhambjff
-//sec-fetch-site:none
-//sec-fetch-mode:cors
-//sec-fetch-dest:empty
-//accept-encoding:gzip, deflate, br
-//accept-language:ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7
-//                          <--- empty line
-//year=2021&month=10&day=1  <--- request body

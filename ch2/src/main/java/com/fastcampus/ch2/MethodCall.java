@@ -8,11 +8,11 @@ import java.util.Scanner;
 
 class ModelController {
 	public String main(HashMap map) {
-		// Àâ¾÷ °á°ú¸¦ mapÀÇ ÀúÀå
+		// ì¡ì—… ê²°ê³¼ë¥¼ mapì˜ ì €ì¥
 		map.put("id", "asdf");
 		map.put("pwd", "1111");
 		
-		return "txtView1";  // ºä ÀÌ¸§À» ¹İÈ¯
+		return "txtView1";  // ë·° ì´ë¦„ì„ ë°˜í™˜
 	}
 }
 
@@ -33,19 +33,19 @@ public class MethodCall {
 	static void render (HashMap map, String viewName) throws IOException {
 		String result = "";
 		
-		// 1. ºäÀÇ ³»¿ëÀ» ÇÑÁÙ¾¿ ÀĞ¾î¼­ ÇÏ³ªÀÇ ¹®ÀÚ¿­·Î ¸¸µç´Ù.
+		// 1. ë·°ì˜ ë‚´ìš©ì„ í•œì¤„ì”© ì½ì–´ì„œ í•˜ë‚˜ì˜ ë¬¸ìì—´ë¡œ ë§Œë“ ë‹¤.
 		Scanner sc = new Scanner(new File(viewName + ".txt"));
 		
 		while(sc.hasNextLine()) 
 			result += sc.nextLine() + System.lineSeparator();
 			
-		// 2. map¿¡ ´ã±ä key¸¦ ÇÏ³ª¾¿ ÀĞ¾î¼­ templateÀÇ ${key}¸¦ value ¹Ù²Û´Ù.
+		// 2. mapì— ë‹´ê¸´ keyë¥¼ í•˜ë‚˜ì”© ì½ì–´ì„œ templateì˜ ${key}ë¥¼ value ë°”ê¾¼ë‹¤.
 		Iterator it = map.keySet().iterator();
 		
 		while(it.hasNext()) {
 			String key = (String)it.next();
 			
-			// 3. replace()·Î key¸¦ value Ä¡È¯ÇÑ´Ù.
+			// 3. replace()ë¡œ keyë¥¼ value ì¹˜í™˜í•œë‹¤.
 			result = result.replace("${"+key+"}", (String)map.get(key));
 		}
 		// 4.
@@ -53,20 +53,3 @@ public class MethodCall {
 		
 	}
 }
-
-
-//[txtView1.txt]
-//id=${id}, pwd=${pwd}
-//
-//[txtView2.txt]
-//id:${id}
-//pwd:${pwd}
-//
-//
-//
-//[½ÇÇà°á°ú]
-//before:{}
-//after :{id=asdf, pwd=1111}
-//[txtView2.txt]
-//id:asdf
-//pwd:1111
