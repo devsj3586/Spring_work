@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.net.URLDecoder" %>
+<%@ page session="false" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +58,7 @@
     </style>
 </head>
 <body>
-    <form action="<c:url value="/login/login"/>" method="post" onsubmit="return formCheck(this);">
+    <form action="/ch2/login/login" method="post" onsubmit="return formCheck(this);">
         <h3 id="title">Login</h3>
         <div id="msg">
 	    <c:if test="${not empty param.msg}">
@@ -66,7 +67,7 @@
 	</div>
         <input type="text" name="id" value="${cookie.id.value}" placeholder="이메일 입력" autofocus>
         <input type="password" name="pwd" placeholder="비밀번호">
-        <input type="hidden" name="toURL" value = "${param.toURL}">
+        <input type="hidden" name="toURL" value="${param.toURL}">
         <button>로그인</button>
         <div>
             <label><input type="checkbox" name="rememberId" value="on" ${empty cookie.id.value ? "" :"checkde" }> 아이디 기억</label> |
