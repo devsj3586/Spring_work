@@ -14,7 +14,7 @@ import org.springframework.validation.Validator;
 
 		@Override
 		public void validate(Object target, Errors errors) { 
-			System.out.println("LocalValidator.validate() is called");
+			System.out.println("UserValidator.validate() is called");
 
 			User user = (User)target;
 			

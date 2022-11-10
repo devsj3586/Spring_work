@@ -58,7 +58,7 @@
     </style>
 </head>
 <body>
-    <form action="/ch2/login/login" method="post" onsubmit="return formCheck(this);">
+    <form action="/ch3/login/login" method="post" onsubmit="return formCheck(this);">
         <h3 id="title">Login</h3>
         <div id="msg">
 	    <c:if test="${not empty param.msg}">
@@ -70,13 +70,13 @@
         <input type="hidden" name="toURL" value="${param.toURL}">
         <button>로그인</button>
         <div>
-            <label><input type="checkbox" name="rememberId" value="on" ${empty cookie.id.value ? "" :"checkde" }> 아이디 기억</label> |
+            <label><input type="checkbox" name="rememberId" value="on" ${empty cookie.id.value ? "":"checked"}> 아이디 기억</label> |
             <a href="">비밀번호 찾기</a> |
             <a href="">회원가입</a>
         </div>
         <script>
             function formCheck(frm) {
-                 var msg ='';
+                 let msg ='';
      
                  if(frm.id.value.length==0) {
                      setMessage('id를 입력해주세요.', frm.id);

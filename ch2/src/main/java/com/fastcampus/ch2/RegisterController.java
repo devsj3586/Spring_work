@@ -1,5 +1,8 @@
 package com.fastcampus.ch2;
 
+import java.text.SimpleDateFormat;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.propertyeditors.StringArrayPropertyEditor;
@@ -7,6 +10,7 @@ import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,21 +25,25 @@ public class RegisterController {
 		ConversionService conversionService = binder.getConversionService();
 		System.out.println("ConversionService = " + conversionService);
 				
-//		SimpleDateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-mm-dd");
 //		binder.registerCustomEditor(Date.class, new CustomDateEditor(df, false));
 		binder.registerCustomEditor(String[].class,"hobby", new StringArrayPropertyEditor("#"));  //배열일때 구분자로 문자열 잘라서 넣어주기 
-		binder.setValidator(new UserValidator());  // UserValidator를 WebDataBinder의 로컬 validator로 등록 
+		// 자동검증 
+//		binder.setValidator(new UserValidator());  // UserValidator를 WebDataBinder의 로컬 validator로 등록 
+//		binder.addValidators(new UserValidator());  // UserValidator를 WebDataBinder의 로컬 validator로 등록
+		List<Validator> validatorList = binder.getValidators();
+		System.out.println("validatorList = " + validatorList);
 	}
-	@RequestMapping (value = "/register/add", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping (value="/register/add", method = {RequestMethod.GET, RequestMethod.POST})
 //	@RequestMapping ("/register/add") // 신규회원 가입 화면
-//	@GetMapping ("/register/add") // 신규회원 가입 화면
+//	@GetMapping ("/add") // 신규회원 가입 화면
 	public String register() {
 		return "registerForm"; // WEB-INF/views/registerForm.jsp
 	}
 //	
 //	@RequestMapping(value = "/register/save", method = RequestMethod.POST)
-	@PostMapping("/register/save")  // 4.3버전 이후 사용가능 
-	public String save(@Valid User user, BindingResult result, Model m) throws Exception {
+	@PostMapping("/save")  // 4.3버전 이후 사용가능 
+	public String save(@Valid User user, BindingResult result, Model m) throws Exception { // maven 을 통해서 가능 @Valid
 		System.out.println("result = "+ result);
 		System.out.println("user = "+ user);
 		
