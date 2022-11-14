@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="car" class="com.fastcampus.ch3.Car">
+        <constructor-arg name="color" value="red"/>   <!-- property = 속성 -->
+        <constructor-arg name="oil" value="100"/>     <!-- constructor-arg -->
+        <constructor-arg name="engine" ref="engine"/> <!-- 참조형일때 ref , 기본형, String 은 value -->
+        <constructor-arg name="doors">  <!--  배열일때 아래처럼 작성 -->
+            <array value-type="com.fastcampus.ch3.Door">
+                <ref bean="door"/>
+                <ref bean="door"/>
+            </array>
+        </constructor-arg>
+    </bean>
+    <bean id="engine" class="com.fastcampus.ch3.Engine"/> <!-- defalut 가 싱글톤 // prototype면 새로운 객체가 만들어짐 -->
+    <bean id="door" class="com.fastcampus.ch3.Door" scope="prototype"/>
+
+</beans>
