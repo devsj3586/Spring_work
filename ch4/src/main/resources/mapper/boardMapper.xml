@@ -57,7 +57,7 @@
         SET   title = #{title}
           , content = #{content}
           , up_date = now()
-        WHERE bno = #{bno}
+        WHERE bno = #{bno} and write = #{writer}
     </update>
 
     <update id="updateCommentCnt" parameterType="map">

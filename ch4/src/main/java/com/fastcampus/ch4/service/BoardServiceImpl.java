@@ -24,6 +24,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public int write(BoardDto boardDto) throws Exception {
+//        throw new Exception("test");
         return boardDao.insert(boardDto);
     }
 
@@ -36,7 +37,6 @@ public class BoardServiceImpl implements BoardService {
     public BoardDto read(Integer bno) throws Exception {
         BoardDto boardDto = boardDao.select(bno);
         boardDao.increaseViewCnt(bno);
-
         return boardDto;
     }
 
