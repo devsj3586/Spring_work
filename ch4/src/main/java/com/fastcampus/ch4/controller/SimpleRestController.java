@@ -21,4 +21,5 @@ public class SimpleRestController {
 
         return p;  // JSON 객체 반환 , 뷰이름 X
     }
+
 }
