@@ -21,16 +21,18 @@ public class CommentController {
     CommentService service;
 
     // 댓글을 수정하는 메서드
-    @PatchMapping("/comments/{cno}")
-    public ResponseEntity<String> modify(@PathVariable Integer cno, @RequestBody CommentDto dto) {
+    @PatchMapping("/comments/{cno}")    // /ch/comments/con  PATCH
+    public ResponseEntity<String> modify(@PathVariable Integer cno, @RequestBody CommentDto dto, HttpSession session) {
 //        String commenter = (String) session.getAttribute("id");
         String commenter = "asdf";
+        dto.setCommenter(commenter);
         dto.setCno(cno);
 
         System.out.println("dto = " + dto);
+
         try {
             if (service.write(dto) != 1)
-                throw new Exception("Write failed");
+                throw new Exception("Write failed.");
 
             return new ResponseEntity<>("MOD_OK", HttpStatus.OK);
         } catch (Exception e) {
@@ -85,6 +87,7 @@ public class CommentController {
 
         try {
             list = service.getList(bno);
+            System.out.println("list = " + list);
             return new ResponseEntity<List<CommentDto>>(list, HttpStatus.OK);   // 200
         } catch (Exception e) {
             e.printStackTrace();
